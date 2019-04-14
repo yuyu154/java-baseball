@@ -1,6 +1,7 @@
 package util;
 
 import domain.GameNumber;
+import domain.RandomGameNumber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public class RandomNumberMaker {
 
     public static GameNumber getRandomGameNumber(int count) {
         try {
-            return new GameNumber(getGameNumberString(count));
+            return new RandomGameNumber(getGameNumberString(count));
         } catch (IllegalArgumentException e) {
             return getRandomGameNumber(count);
         }

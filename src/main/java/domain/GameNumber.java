@@ -4,23 +4,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameNumber {
-    private List<String> numbers;
+    private static final String BLANK = "";
+    private static final String ZERO = "0";
+    private static final int SIZE = 3;
+    protected List<String> numbers;
 
     public GameNumber(String input) {
         checkLenth(input);
         checkIsZero(input);
-        numbers = Arrays.asList(input.split(""));
-        System.out.println(numbers);
+        numbers = Arrays.asList(input.split(BLANK));
     }
 
+
     private void checkLenth(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("세자리 숫자 입력하세요 다시");
+        if (input.length() != SIZE) {
+            throw new IllegalArgumentException("세자리 외에는 안되요");
         }
     }
 
     private void checkIsZero(String input) {
-        if (input.contains("0")) {
+        if (input.contains(ZERO)) {
             throw new IllegalArgumentException("0를 입력하지마세요");
         }
     }

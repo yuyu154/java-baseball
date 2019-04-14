@@ -16,8 +16,10 @@ public class RestartToken {
 
     public boolean isRestart() {
         if (number == 1) {
+            System.out.println("재실행합니다");
             return true;
         }
+        System.out.println("종료");
         return false;
     }
 }

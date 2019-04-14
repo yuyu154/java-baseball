@@ -7,7 +7,7 @@ public class InputView {
 
     public static GameNumber getGameNumber() {
         try {
-            System.out.println("세자리 숫자 입력하세요");
+            System.out.println("3자리의 number를 입력하세요");
             return new GameNumber(InputUtil.getGameNumberString());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -17,7 +17,7 @@ public class InputView {
 
     public static RestartToken getRestartToken() {
         try {
-            System.out.println("재시작 1 누르시고 아니면 2누르시고");
+            System.out.println("재실행하려면 1을 아니면 2를 입력하세요");
             return new RestartToken(getInt());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

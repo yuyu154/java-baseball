@@ -31,7 +31,7 @@ public class Player {
             playerGameNumber = InputView.getGameNumber();
             result = randomGameNumber.calculate(playerGameNumber);
             result.printResult();
-        } while (result.isFinsh());
+        } while (!result.isFinsh());
     }
 
     private boolean askRestart() {
