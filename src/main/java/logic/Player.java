@@ -1,6 +1,7 @@
 package logic;
 
 import domain.GameNumber;
+import domain.GameResult;
 import util.InputView;
 import util.RandomNumberMaker;
 
@@ -19,5 +20,8 @@ public class Player {
     }
 
     public void play() {
+        System.out.println("랜덤 넘버 " + randomGameNumber);
+        GameResult result = randomGameNumber.calculate(playerGameNumber);
+        result.printResult();
     }
 }
