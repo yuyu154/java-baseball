@@ -9,7 +9,8 @@ public class GameNumber {
     public GameNumber(String input) {
         checkLenth(input);
         checkIsZero(input);
-        numbers = Arrays.asList(input);
+        numbers = Arrays.asList(input.split(""));
+        System.out.println(numbers);
     }
 
     private void checkLenth(String input) {
@@ -25,35 +26,30 @@ public class GameNumber {
     }
 
     public GameResult calculate(GameNumber other) {
-        int strike = 0;
-        int ball = 0;
-        for (String a : numbers) {
-            int index = this.numberAt(a);
-            if (other.getNumber(index).equals(a)) {
-                strike++;
-            } else if (other.isContains(a))
-                ball++;
-        }
+        int strike = getStrike(other);
+        int ball = getBalls(other);
         return new GameResult(ball, strike);
     }
 
-    private String getNumber(int number) {
-        return numbers.get(number);
+    private int getBalls(GameNumber other) {
+        return (int) numbers.stream()
+                .filter(number -> other.isBall(number))
+                .filter(number -> !other.isStrike(number, numbers.indexOf(number)))
+                .count();
     }
 
-    private int numberAt(String str) {
-        return numbers.indexOf(str);
+    private int getStrike(GameNumber other) {
+        return (int) numbers.stream()
+                .filter(number -> other.isStrike(number, numbers.indexOf(number)))
+                .count();
     }
 
-    private boolean isContains(String number) {
-        if (numbers.contains(number)) {
-            return true;
-        }
-        return false;
+    private boolean isStrike(String number, int index) {
+        return numbers.get(index).equals(number);
     }
 
-    public String getGameNumbers() {
-        return String.join("", numbers);
+    private boolean isBall(String number) {
+        return numbers.contains(number);
     }
 
     public String toString() {

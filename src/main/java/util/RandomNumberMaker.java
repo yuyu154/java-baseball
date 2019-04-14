@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomNumberMaker {
+    private static final String BLANK = "";
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
@@ -17,12 +18,13 @@ public class RandomNumberMaker {
             return getRandomGameNumber(count);
         }
     }
+
     private  static String getGameNumberString(int count) {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < count ; i++) {
             list.add(Integer.toString(getRandomNumber()));
         }
-        return String.join("", list);
+        return String.join(BLANK, list);
     }
 
     private static int getRandomNumber() {

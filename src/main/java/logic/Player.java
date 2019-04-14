@@ -14,14 +14,28 @@ public class Player {
     public Player() {
         init();
     }
+
     private void init() {
         randomGameNumber = RandomNumberMaker.getRandomGameNumber(GAME_COUNT);
-        playerGameNumber = InputView.getGameNumber();
     }
 
     public void play() {
-        System.out.println("랜덤 넘버 " + randomGameNumber);
-        GameResult result = randomGameNumber.calculate(playerGameNumber);
-        result.printResult();
+        do {
+            gameProceed();
+        } while(askRestart());
+    }
+
+    private void gameProceed() {
+        GameResult result ;
+        do {
+            playerGameNumber = InputView.getGameNumber();
+            result = randomGameNumber.calculate(playerGameNumber);
+            result.printResult();
+        } while (result.isFinsh());
+    }
+
+    private boolean askRestart() {
+        init();
+        return InputView.getRestartToken().isRestart();
     }
 }
