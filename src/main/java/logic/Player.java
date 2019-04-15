@@ -29,7 +29,7 @@ public class Player {
         GameResult result ;
         do {
             playerGameNumber = InputView.getGameNumber();
-            result = randomGameNumber.calculate(playerGameNumber);
+            result = playerGameNumber.calculate(randomGameNumber);
             result.printResult();
         } while (!result.isFinsh());
     }

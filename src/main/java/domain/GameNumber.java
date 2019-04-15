@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameNumber {
-    private static final String BLANK = "";
+    private static final String BLANK = "\\s*";
     private static final String ZERO = "0";
     private static final int SIZE = 3;
+
     protected List<String> numbers;
 
     public GameNumber(String input) {
@@ -14,7 +15,6 @@ public class GameNumber {
         checkIsZero(input);
         numbers = Arrays.asList(input.split(BLANK));
     }
-
 
     private void checkLenth(String input) {
         if (input.length() != SIZE) {
@@ -29,34 +29,41 @@ public class GameNumber {
     }
 
     public GameResult calculate(GameNumber other) {
-        int strike = getStrike(other);
-        int ball = getBalls(other);
+        int strike = 0;
+        int ball = 0;
+        System.out.println(this);
+        System.out.println(other);
+        for (int index = 0; index < numbers.size(); index++) {
+            String number = numbers.get(index);
+            strike += other.getStrike(number, index);
+            ball += other.getBall(number, index);
+        }
         return new GameResult(ball, strike);
     }
 
-    private int getBalls(GameNumber other) {
-        return (int) numbers.stream()
-                .filter(number -> other.isBall(number))
-                .filter(number -> !other.isStrike(number, numbers.indexOf(number)))
-                .count();
+    protected int getStrike(String number, int index) {
+        if (this.isStrike(number, index)) {
+            return 1;
+        }
+        return 0;
     }
 
-    private int getStrike(GameNumber other) {
-        return (int) numbers.stream()
-                .filter(number -> other.isStrike(number, numbers.indexOf(number)))
-                .count();
+    protected boolean isStrike(String number, int index) {
+        return this.numbers.get(index).equals(number);
     }
 
-    private boolean isStrike(String number, int index) {
-        return numbers.get(index).equals(number);
+    protected int getBall(String number, int index) {
+        if (this.isBall(number) && !isStrike(number, index)) {
+            return 1;
+        }
+        return 0;
     }
 
-    private boolean isBall(String number) {
-        return numbers.contains(number);
+    protected boolean isBall(String number) {
+        return this.numbers.contains(number);
     }
 
     public String toString() {
-        return String.join("", numbers);
+        return String.join(",", numbers);
     }
-
 }

@@ -19,7 +19,7 @@ public class RestartToken {
             System.out.println("재실행합니다");
             return true;
         }
-        System.out.println("종료");
+        System.out.println("종료합니다");
         return false;
     }
 }

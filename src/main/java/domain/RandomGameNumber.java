@@ -9,7 +9,6 @@ public class RandomGameNumber extends GameNumber {
     public RandomGameNumber(String input) {
         super(input);
         checkDuplicate(numbers);
-        System.out.println(numbers);
     }
 
     private void checkDuplicate(List<String> input) {
