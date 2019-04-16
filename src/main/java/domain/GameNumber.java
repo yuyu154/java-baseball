@@ -7,6 +7,7 @@ public class GameNumber {
     private static final String BLANK = "\\s*";
     private static final String ZERO = "0";
     private static final int SIZE = 3;
+    private static final String COMMA = ",";
 
     protected List<String> numbers;
 
@@ -62,6 +63,6 @@ public class GameNumber {
     }
 
     public String toString() {
-        return String.join(",", numbers);
+        return String.join(COMMA, numbers);
     }
 }
