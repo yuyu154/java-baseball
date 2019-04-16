@@ -7,7 +7,7 @@ import util.RandomNumberMaker;
 
 public class Player {
 
-    private static final int GAME_COUNT = 3;
+    private static final int NUMBER_COUNT = 3;
     private GameNumber playerGameNumber;
     private GameNumber randomGameNumber;
 
@@ -16,7 +16,7 @@ public class Player {
     }
 
     private void init() {
-        randomGameNumber = RandomNumberMaker.getRandomGameNumber(GAME_COUNT);
+        randomGameNumber = RandomNumberMaker.getRandomGameNumber(NUMBER_COUNT);
     }
 
     public void play() {

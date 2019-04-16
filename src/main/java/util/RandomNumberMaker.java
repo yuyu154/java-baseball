@@ -12,6 +12,7 @@ public class RandomNumberMaker {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
+    //string을 GameNumber로 생성한다.
     public static GameNumber getRandomGameNumber(int count) {
         try {
             return new RandomGameNumber(getGameNumberString(count));

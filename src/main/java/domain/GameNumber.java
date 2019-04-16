@@ -12,7 +12,7 @@ public class GameNumber {
 
     public GameNumber(String input) {
         checkLenth(input);
-        checkIsZero(input);
+        checkIfContainZero(input);
         numbers = Arrays.asList(input.split(BLANK));
     }
 
@@ -22,26 +22,24 @@ public class GameNumber {
         }
     }
 
-    private void checkIsZero(String input) {
+    private void checkIfContainZero(String input) {
         if (input.contains(ZERO)) {
             throw new IllegalArgumentException("0를 입력하지마세요");
         }
     }
 
-    public GameResult calculate(GameNumber other) {
+    public GameResult calculate(GameNumber answerNumber) {
         int strike = 0;
         int ball = 0;
-        System.out.println(this);
-        System.out.println(other);
         for (int index = 0; index < numbers.size(); index++) {
             String number = numbers.get(index);
-            strike += other.getStrike(number, index);
-            ball += other.getBall(number, index);
+            strike += answerNumber.getStrike(number, index);
+            ball += answerNumber.getBall(number, index);
         }
         return new GameResult(ball, strike);
     }
 
-    protected int getStrike(String number, int index) {
+    private int getStrike(String number, int index) {
         if (this.isStrike(number, index)) {
             return 1;
         }

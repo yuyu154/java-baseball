@@ -20,7 +20,7 @@ public class GameResult {
 
     public boolean isFinsh() {
         if (strike == FINSH_COUNT) {
-            System.out.println("맞추셨습니다");
+            System.out.println("정답을 맞추셨습니다");
             return true;
         }
         return false;

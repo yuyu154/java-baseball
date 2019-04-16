@@ -10,7 +10,7 @@ public class RestartToken {
 
     private void isValid(int number) {
         if (!(number == 1 || number == 2)) {
-            throw new IllegalArgumentException("1또는 2를 눌르세요\n");
+            throw new IllegalArgumentException("1또는 2를 눌르세요");
         }
     }
 
